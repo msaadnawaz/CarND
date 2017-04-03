@@ -22,11 +22,11 @@ The goals / steps of this project are the following:
 [image1]: ./output_images/image2.jpg "Visualization"
 [image2]: ./output_images/grayscale.jpg "Grayscaling"
 [image3]: ./output_images/example.jpg "original"
-[image4]: ./traffic_sign_test_images/image1.jpg "Traffic Sign 1"
-[image5]: ./traffic_sign_test_images/image2.jpg "Traffic Sign 2"
-[image6]: ./traffic_sign_test_images/image3.jpg "Traffic Sign 3"
-[image7]: ./traffic_sign_test_images/image6.jpg "Traffic Sign 4"
-[image8]: ./traffic_sign_test_images/gsol.png "Traffic Sign 5"
+[image4]: ./traffic-sign-test-images/image1.jpg "Traffic Sign 1"
+[image5]: ./traffic-sign-test-images/image2.jpg "Traffic Sign 2"
+[image6]: ./traffic-sign-test-images/image3.jpg "Traffic Sign 3"
+[image7]: ./traffic-sign-test-images/image6.jpg "Traffic Sign 4"
+[image8]: ./traffic-sign-test-images/gsol.png "Traffic Sign 5"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
