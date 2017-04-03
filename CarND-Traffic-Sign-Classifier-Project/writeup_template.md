@@ -2,8 +2,6 @@
 
 ##Writeup Template
 
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
-
 ---
 
 **Build a Traffic Sign Recognition Project**
@@ -20,8 +18,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./output_images/image2.jpg "Visualization"
-[image2]: ./output_images/grayscale.jpg "Grayscaling"
-[image3]: ./output_images/example.jpg "original"
+[image2]: ./output_images/example.jpg "images"
 [image4]: ./traffic-sign-test-images/image1.jpg "Traffic Sign 1"
 [image5]: ./traffic-sign-test-images/image2.jpg "Traffic Sign 2"
 [image6]: ./traffic-sign-test-images/image3.jpg "Traffic Sign 3"
@@ -36,7 +33,7 @@ The goals / steps of this project are the following:
 
 ####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
-You're reading it! and here is a link to my [project code](https://github.com/msaadnawaz/CarND/tree/master/CarND-Traffic-Sign-Classifier-Project)
+You're reading it! and here is a link to my [project code](https://github.com/msaadnawaz/CarND/blob/master/CarND-Traffic-Sign-Classifier-Project/Traffic_Sign_Classifier.ipynb)
 
 ###Data Set Summary & Exploration
 
@@ -74,7 +71,6 @@ As a last step, I normalized the image data to bring the values to the range of 
 Here is an example of a traffic sign image before and after preprocessing.
 
 ![alt text][image2]
-![alt text][image3]
 
 ####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 
