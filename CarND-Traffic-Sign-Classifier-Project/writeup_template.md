@@ -19,14 +19,14 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image1]: ./output_images/image2.jpg "Visualization"
+[image2]: ./output_images/grayscale.jpg "Grayscaling"
+[image3]: ./output_images/example.jpg "original"
+[image4]: ./traffic_sign_test_images/image1.jpg "Traffic Sign 1"
+[image5]: ./traffic_sign_test_images/image2.jpg "Traffic Sign 2"
+[image6]: ./traffic_sign_test_images/image3.jpg "Traffic Sign 3"
+[image7]: ./traffic_sign_test_images/image6.jpg "Traffic Sign 4"
+[image8]: ./traffic_sign_test_images/gsol.png "Traffic Sign 5"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -36,7 +36,7 @@ The goals / steps of this project are the following:
 
 ####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+You're reading it! and here is a link to my [project code](https://github.com/msaadnawaz/CarND/tree/master/CarND-Traffic-Sign-Classifier-Project)
 
 ###Data Set Summary & Exploration
 
@@ -44,19 +44,19 @@ You're reading it! and here is a link to my [project code](https://github.com/ud
 
 The code for this step is contained in the second code cell of the IPython notebook.  
 
-I used the pandas library to calculate summary statistics of the traffic
+I used the built-in python functions and numpy library to calculate summary statistics of the traffic
 signs data set:
 
 * The size of training set is 34799
 * The size of test set is 12630
 * The shape of a traffic sign image is (32,32,3)
-* The number of unique classes/labels in the data set is 1
+* The number of unique classes/labels in the data set is 43
 
 ####2. Include an exploratory visualization of the dataset and identify where the code is in your code file.
 
 The code for this step is contained in the third code cell of the IPython notebook.  
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. It is a bar chart showing how the data is split across different classes.
 
 ![alt text][image1]
 
@@ -66,46 +66,45 @@ Here is an exploratory visualization of the data set. It is a bar chart showing 
 
 The code for this step is contained in the fourth code cell of the IPython notebook.
 
-As a first step, I decided to convert the images to grayscale because ...
+As a first step, I decided to convert the images to grayscale to train the model without influence of color sharpness.
 
-Here is an example of a traffic sign image before and after grayscaling.
+
+As a last step, I normalized the image data to bring the values to the range of -1 to 1 and prevent model from going out of bounds from large values .
+
+Here is an example of a traffic sign image before and after preprocessing.
 
 ![alt text][image2]
-
-As a last step, I normalized the image data because ...
+![alt text][image3]
 
 ####2. Describe how, and identify where in your code, you set up training, validation and testing data. How much data was in each set? Explain what techniques were used to split the data into these sets. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, identify where in your code, and provide example images of the additional data)
 
-The code for splitting the data into training and validation sets is contained in the fifth code cell of the IPython notebook.  
+The training and validation sets were already split from the dataset and the code for reading the data is contained in the first code cell of the IPython notebook.  
 
-To cross validate my model, I randomly split the training data into a training set and validation set. I did this by ...
-
-My final training set had X number of images. My validation set and test set had Y and Z number of images.
-
-The sixth code cell of the IPython notebook contains the code for augmenting the data set. I decided to generate additional data because ... To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
+My final training set had 34799 number of images. My validation set and test set had 4410 and 12630 number of images.
 
 
 ####3. Describe, and identify where in your code, what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
-The code for my final model is located in the seventh cell of the ipython notebook. 
+The code for my final model is located in the tenth cell of the ipython notebook. 
 
 My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Input         		| 32x32x1 Grayscale image 						| 
+| Convolution 5x5     	| 1x1 stride, valid padding, outputs 28x28x6	|
 | RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
+| Max pooling	      	| 2x2 stride,  outputs 14x14x6  				|
+| Convolution 5x5	    | 1x1 stride, valid padding, outputs 10x10x16	|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride,  outputs 5x5x16   				|
+| Flatten       		| outputs 400  									|
+| Fully connected		| outputs 120  									|
+| RELU					|												|
+| Fully connected		| outputs 84  									|
+| RELU					|												|
+| Fully connected		| outputs 43  									|
+| Softmax				|           									|
 |						|												|
 |						|												|
  
@@ -113,13 +112,13 @@ My final model consisted of the following layers:
 
 ####4. Describe how, and identify where in your code, you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
-The code for training the model is located in the eigth cell of the ipython notebook. 
+The code for training the model is located in the fourteenth cell of the ipython notebook. 
 
 To train the model, I used an ....
 
 ####5. Describe the approach taken for finding a solution. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
 
-The code for calculating the accuracy of the model is located in the ninth cell of the Ipython notebook.
+The code for calculating the accuracy of the model is located in the fifteenth cell of the Ipython notebook.
 
 My final model results were:
 * training set accuracy of ?
@@ -135,9 +134,11 @@ If an iterative approach was chosen:
 
 If a well known architecture was chosen:
 * What architecture was chosen?
+    LeNet architecture was chosen
 * Why did you believe it would be relevant to the traffic sign application?
+    I learned and implemented LeNet architecture during CNN lesson and MNIST lab and I wanted to learn to tune the parameters and       hyperparameters connected around the architecture before changing the architecture itself. The LeNet architecture with two convolutional layers and 3 fully connected layers should be fully capable of splitting images into 43 classes.
 * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+    The final model gives X percent accuracy for training data and Y percent accuracy for validation data which means that it does pretty well in classification of traffic sign images.
 
 ###Test a Model on New Images
 
@@ -158,28 +159,69 @@ Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
+| Keep Right  			| Keep Right									|
 | Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Right of Way			| Right of Way									|
+| 50 km/h	      		| 50 km/h   					 				|
+| Go Straight or Left	| Go Straight or Left  							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 5 of the 5 traffic signs, which gives an accuracy of 100%. This compares favorably to the accuracy on the test set.
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction and identify where in your code softmax probabilities were outputted. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the 20th cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is relatively sure that this is a keep right sign (probability of ~1.0), and the image does contain a keep right sign. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| ~1.00000000  			| Keep right   									| 
+| 1.71784187e-08		| No passing for vehicles over 3.5 metric tons	|
+| 4.18085732e-13		| No passing									|
+| 2.47383629e-21		| Dangerous curve to the right	 				|
+| 1.89124767e-24		| Slippery Road 								|
 
 
-For the second image ... 
+For the second image, the model is pretty sure that this is a stop sign. The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| ~1.00000000  			| Stop sign   									| 
+| 4.25643965e-11		| Speed limit (60km/h)							|
+| 6.73131562e-19		| Speed limit (80km/h)							|
+| 4.22085645e-20		| Speed limit (50km/h)			 				|
+| 4.21151189e-20		| Priority road     							|
+
+
+For the third image, the model is pretty sure that this is a Right-of-way at the next intersection sign. The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| ~1.00000000  			| Right-of-way at the next intersection			| 
+| 5.11140480e-36		| Pedestrians									|
+| 6.49685689e-38		| Beware of ice/snow							|
+| 0.00000000e+00		| Speed limit (20km/h)			 				|
+| 0.00000000e+00		| Speed limit (30km/h) 							|
+
+
+For the fourth image, the model is pretty sure that this is a Speed limit (50km/h) sign. The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| ~1.00000000  			| Speed limit (50km/h)							| 
+| 6.54882861e-18		| Stop sign 									|
+| 3.56683043e-33		| Keep right									|
+| 4.23250923e-37		| Speed limit (60km/h)			 				|
+| 2.54230434e-38		| Speed limit (80km/h) 							|
+
+
+For the fifth image, the model is pretty sure that this is a Go straight or left sign. The top five soft max probabilities were
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| ~1.00000000  			| Go straight or left							| 
+| 1.20534980e-18		| Ahead only									|
+| 1.20138522e-23		| Dangerous curve to the right					|
+| 5.83263105e-33		| Traffic signals				 				|
+| 1.03337644e-33		| No passing for vehicles over 3.5 metric tons	|
