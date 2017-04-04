@@ -1,7 +1,5 @@
 #**Traffic Sign Recognition** 
 
-##Writeup Template
-
 ---
 
 **Build a Traffic Sign Recognition Project**
@@ -160,7 +158,7 @@ Here are the results of the prediction:
 |:---------------------:|:---------------------------------------------:| 
 | Keep Right  			| Keep Right									|
 | Stop Sign      		| Stop sign   									| 
-| Right of Way			| Right of Way									|
+| Right of Way			| Right-of-way at the next intersection			|
 | 50 km/h	      		| 50 km/h   					 				|
 | Go Straight or Left	| Go Straight or Left  							|
 
@@ -176,10 +174,10 @@ For the first image, the model is relatively sure that this is a keep right sign
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | ~1.00000000  			| Keep right   									| 
-| 1.71784187e-08		| No passing for vehicles over 3.5 metric tons	|
-| 4.18085732e-13		| No passing									|
-| 2.47383629e-21		| Dangerous curve to the right	 				|
-| 1.89124767e-24		| Slippery Road 								|
+| 5.17256593e-09		| No passing for vehicles over 3.5 metric tons	|
+| 7.53621998e-10		| Turn left ahead								|
+| 3.98585550e-14		| Yield											|
+| 2.37154137e-16		| Speed limit (80km/h)							|
 
 
 For the second image, the model is pretty sure that this is a stop sign. The top five soft max probabilities were
@@ -187,10 +185,10 @@ For the second image, the model is pretty sure that this is a stop sign. The top
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | ~1.00000000  			| Stop sign   									| 
-| 4.25643965e-11		| Speed limit (60km/h)							|
-| 6.73131562e-19		| Speed limit (80km/h)							|
-| 4.22085645e-20		| Speed limit (50km/h)			 				|
-| 4.21151189e-20		| Priority road     							|
+| 5.75215639e-11		| Speed limit (80km/h)							|
+| 1.70284620e-11		| Speed limit (50km/h)							|
+| 3.59226300e-14		| Speed limit (30km/h)			 				|
+| 2.20234792e-15		| Yield											|
 
 
 For the third image, the model is pretty sure that this is a Right-of-way at the next intersection sign. The top five soft max probabilities were
@@ -198,10 +196,10 @@ For the third image, the model is pretty sure that this is a Right-of-way at the
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | ~1.00000000  			| Right-of-way at the next intersection			| 
-| 5.11140480e-36		| Pedestrians									|
-| 6.49685689e-38		| Beware of ice/snow							|
-| 0.00000000e+00		| Speed limit (20km/h)			 				|
-| 0.00000000e+00		| Speed limit (30km/h) 							|
+| 2.35167892e-22		| Beware of ice/snow							|
+| 9.44370732e-25		| Traffic signals								|
+| 4.85561028e-31		| Double curve					 				|
+| 2.50079248e-36		| Turn right ahead								|
 
 
 For the fourth image, the model is pretty sure that this is a Speed limit (50km/h) sign. The top five soft max probabilities were
@@ -209,10 +207,10 @@ For the fourth image, the model is pretty sure that this is a Speed limit (50km/
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | ~1.00000000  			| Speed limit (50km/h)							| 
-| 6.54882861e-18		| Stop sign 									|
-| 3.56683043e-33		| Keep right									|
-| 4.23250923e-37		| Speed limit (60km/h)			 				|
-| 2.54230434e-38		| Speed limit (80km/h) 							|
+| 1.91813271e-22		| Wild animals crossing							|
+| 7.31529271e-23		| Speed limit (80km/h)							|
+| 3.70683505e-27		| Speed limit (30km/h)			 				|
+| 7.91947569e-29		| Bicycles crossing 							|
 
 
 For the fifth image, the model is pretty sure that this is a Go straight or left sign. The top five soft max probabilities were
@@ -220,7 +218,7 @@ For the fifth image, the model is pretty sure that this is a Go straight or left
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | ~1.00000000  			| Go straight or left							| 
-| 1.20534980e-18		| Ahead only									|
-| 1.20138522e-23		| Dangerous curve to the right					|
-| 5.83263105e-33		| Traffic signals				 				|
-| 1.03337644e-33		| No passing for vehicles over 3.5 metric tons	|
+| 3.51341406e-22		| Slippery road									|
+| 2.84842709e-25		| General caution								|
+| 2.79677311e-28		| Ahead only					 				|
+| 1.68047724e-29		| Dangerous curve to the right					|
