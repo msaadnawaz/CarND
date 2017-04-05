@@ -1,0 +1,3 @@
+[submodule "CarND-Behavioral-Cloning-P3"]
+	path = CarND-Behavioral-Cloning-P3
+	url = https://github.com/udacity/CarND-Behavioral-Cloning-P3
