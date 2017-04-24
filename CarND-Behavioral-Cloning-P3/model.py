@@ -97,6 +97,7 @@ model.add(MaxPooling2D(2,2))
 model.add(Conv2D(96,(3,3), activation='relu'))
 model.add(MaxPooling2D(2,2))
 model.add(Flatten())
+model.add(Dropout(0.2))
 model.add(Dense(864))
 model.add(Activation('relu'))
 model.add(Dense(480))
@@ -109,7 +110,7 @@ model.add(Dense(84))
 model.add(Activation('relu'))
 model.add(Dense(1))
 
-model.compile(loss='mse', optimizer='adam')
+model.compile(loss='mse', optimizer='adam', metric=['accuracy'])
 
 #model.fit(X_train, y_train, validation_split=0.2, shuffle=True, epochs=10)
 
