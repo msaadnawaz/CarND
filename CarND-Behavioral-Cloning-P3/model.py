@@ -38,17 +38,17 @@ delta=0.2
 
 for line in lines:
     source_path = line[0]
-    filename = source_path.split('/')[-1]
+    filename = source_path.split('\\')[-1]
     current_path = '/home/carnd/data/IMG/' + filename
     image_center=cv2.imread(current_path)
     
     source_path = line[1]
-    filename = source_path.split('/')[-1]
+    filename = source_path.split('\\')[-1]
     current_path = '/home/carnd/data/IMG/' + filename    
     image_left=cv2.imread(current_path)
 
     source_path = line[2]
-    filename = source_path.split('/')[-1]
+    filename = source_path.split('\\')[-1]
     current_path = '/home/carnd/data/IMG/' + filename
     image_right=cv2.imread(current_path)
     
