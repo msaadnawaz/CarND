@@ -27,7 +27,7 @@ def generator(X_data, y_data, batch_size):
 
 lines=[]
 
-with open('C:/CarND/behavioral_cloning_training_data/data/driving_log.csv', 'r') as csvfile:
+with open('/home/carnd/data/driving_log.csv', 'r') as csvfile:
     reader=csv.reader(csvfile)
     for line in reader:
         lines.append(line)
@@ -38,13 +38,19 @@ delta=0.2
 
 for line in lines:
     source_path = line[0]
-    image_center=cv2.imread(source_path)
+    filename = source_path.split('/')[-1]
+    current_path = '/home/carnd/data/IMG/' + filename
+    image_center=cv2.imread(current_path)
     
     source_path = line[1]
-    image_left=cv2.imread(source_path)
+    filename = source_path.split('/')[-1]
+    current_path = '/home/carnd/data/IMG/' + filename    
+    image_left=cv2.imread(current_path)
 
     source_path = line[2]
-    image_right=cv2.imread(source_path)
+    filename = source_path.split('/')[-1]
+    current_path = '/home/carnd/data/IMG/' + filename
+    image_right=cv2.imread(current_path)
     
     image_center_flipped=np.fliplr(image_center)
     image_left_flipped=np.fliplr(image_left)
