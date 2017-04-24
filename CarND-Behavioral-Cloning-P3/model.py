@@ -41,16 +41,19 @@ for line in lines:
     filename = source_path.split('\\')[-1]
     current_path = '/home/carnd/data/IMG/' + filename
     image_center=cv2.imread(current_path)
+    image_center=image_center[71:135,:,:]
     
     source_path = line[1]
     filename = source_path.split('\\')[-1]
     current_path = '/home/carnd/data/IMG/' + filename    
     image_left=cv2.imread(current_path)
-
+    image_left=image_left[71:135,:,:]
+    
     source_path = line[2]
     filename = source_path.split('\\')[-1]
     current_path = '/home/carnd/data/IMG/' + filename
     image_right=cv2.imread(current_path)
+    image_right=image_right[71:135,:,:]
     
     image_center_flipped=np.fliplr(image_center)
     image_left_flipped=np.fliplr(image_left)
@@ -92,8 +95,7 @@ valid_generator=generator(X_valid, y_valid, batch_size)
 
 #Here is the definition of neural network
 model=Sequential()
-model.add(Lambda(lambda x:x/128-1, input_shape=(160,320,3)))
-model.add(Cropping2D(cropping=((70,25), (0,0))))
+model.add(Lambda(lambda x:x/128-1, input_shape=(65,320,3)))
 model.add(Conv2D(18,(3,3), activation='relu'))
 model.add(MaxPooling2D(2,2))
 model.add(Conv2D(32,(3,3), activation='relu'))
