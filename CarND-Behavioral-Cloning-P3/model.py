@@ -41,19 +41,19 @@ for line in lines:
     filename = source_path.split('\\')[-1]
     current_path = '/home/carnd/data/IMG/' + filename
     image_center=cv2.imread(current_path)
-    image_center=image_center[71:135,:,:]
+    image_center=image_center[70:135,:,:]
     
     source_path = line[1]
     filename = source_path.split('\\')[-1]
     current_path = '/home/carnd/data/IMG/' + filename    
     image_left=cv2.imread(current_path)
-    image_left=image_left[71:135,:,:]
+    image_left=image_left[70:135,:,:]
     
     source_path = line[2]
     filename = source_path.split('\\')[-1]
     current_path = '/home/carnd/data/IMG/' + filename
     image_right=cv2.imread(current_path)
-    image_right=image_right[71:135,:,:]
+    image_right=image_right[70:135,:,:]
     
     image_center_flipped=np.fliplr(image_center)
     image_left_flipped=np.fliplr(image_left)
