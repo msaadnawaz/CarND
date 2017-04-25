@@ -13,12 +13,12 @@ The goals / steps of this project are the following:
 [image1]: ./examples/model.png "Model Shape"
 [image2]: ./examples/placeholder.png "Grayscaling"
 [image3]: ./examples/normal.jpg "Normal Image"
-[image4]: ./examples/recovery1.png "Recovery Image"
-[image5]: ./examples/recovery2.png "Recovery Image"
-[image6]: ./examples/recovery3.png "Recovery Image"
-[image7]: ./examples/recovery4.png "Recovery Image"
-[image8]: ./examples/recovery5.png "Recovery Image"
-[image9]: ./examples/recovery6.png "Recovery Image"
+[image4]: ./examples/recovery1.jpg "Recovery Image"
+[image5]: ./examples/recovery2.jpg "Recovery Image"
+[image6]: ./examples/recovery3.jpg "Recovery Image"
+[image7]: ./examples/recovery4.jpg "Recovery Image"
+[image8]: ./examples/recovery5.jpg "Recovery Image"
+[image9]: ./examples/recovery6.jpg "Recovery Image"
 
 
 ## Rubric Points
