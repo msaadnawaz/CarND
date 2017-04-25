@@ -101,13 +101,14 @@ To capture good driving behavior, I first recorded three laps on track one using
 
 ![alt text][image3]
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to. These images show what a recovery looks like starting from road edge:
+I then recorded the vehicle recovering from the left side and right sides of the road (especially on turns) back to center so that the vehicle would learn to. These images show what a recovery looks like starting from road edge:
 
-![alt text][image3]
 ![alt text][image4]
 ![alt text][image5]
 ![alt text][image6]
 ![alt text][image7]
+![alt text][image8]
+![alt text][image9]
 
 
 To augment the data sat, I also flipped images and angles thinking that this would minimize bias.
