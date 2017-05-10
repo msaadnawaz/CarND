@@ -137,10 +137,10 @@ Here's a [link to my video result](./project_video_output.mp4)
 
 I combined the gradient and HLS thresholds to extract lane lines from images and then I warped the images such that the straight lines appear parallel and vertical on warped image. Similarly I went ahead with procudure as mentioned but I tried this on over all images successfully. But I still didn't get to run smoothly on the video and then I changed my pipeline for video to average the result of 10 recent frames. Then I changed my video pipeline to start searching for lane lines in next frame from the base (y=720) of x value in current frame but this method made the lane finding worse because I was not considering the histogram output of current frame and there was significant difference in base x value for some frames. After this, I changed the pipeline to start searching for lane line from the mean of previous frame base value and histogram max value. This helped my lane finding significantly but I was still going off in shadows. Then I started thresholding over lightness channel and tried it on captured screenshot from video as well which helped me run over this smoothly.
 
-[alt text][image8] shadowoverlayed
+[alt text][image8]
 
 My implementation does not work good when there are more markings on road than the actual lane lines (like in challenge video). It partially works when there are hard turns like in harder challenge video.
 
 The pipeline could be made more robust if the polynomial length over y-axis is kept variable to accomodate sharp turns. One suggestion from lesson which I could not successfully implement is to check whether the lane lines are parallel or not. I believe this would also make it robust. Another problem is removal of clutter i.e. consistent shadows from road dividers/guardrails and renovated patches of road which appear as additional line.
 
-[alt text][image9] clutter
+[alt text][image9]
