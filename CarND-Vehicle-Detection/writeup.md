@@ -11,12 +11,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 [image1]: ./examples/car_not_car.png
-[image2]: ./examples/image_for_hog.png
-[image3]: ./examples/hog0.png
-[image4]: ./examples/hog1.png
-[image5]: ./examples/hog2.png
-[image6]: ./examples/features_before_normalization.png
-[image7]: ./examples/normalized_features.png
+[image2]: ./output_images/hog1.png
+[image3]: ./output_images/features_before_normalization.png
+[image4]: ./output_images/normalized_features.png
 [image8]: ./examples/sliding_window.jpg
 [image9]: ./examples/bboxes_and_heat.png
 [image10]: ./examples/labels_map.png
@@ -51,9 +48,6 @@ Here is an example using the `YCrCb` color space and HOG parameters of `orientat
 
 
 ![alt text][image2]
-![alt text][image3]
-![alt text][image4]
-![alt text][image5]
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
@@ -61,8 +55,8 @@ I tried various combinations of parameters and found that YUV and YCrCb have bet
 
 I verified that normalization is working well on features and this helped in deciding for including histogram and spatial binned features as well.
 
-![alt text][image6]
-![alt text][image7]
+![alt text][image3]
+![alt text][image4]
 
 ####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
@@ -80,7 +74,7 @@ I implemented this in Detectionpipeline.ipynb of my repository. I marked region 
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
 
-![alt text][image9]
+![alt text][image8]
 ---
 
 ### Video Implementation
