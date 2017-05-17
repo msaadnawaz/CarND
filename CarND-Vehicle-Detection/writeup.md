@@ -109,7 +109,9 @@ Here's an example result showing the heatmap from a series of frames of video, t
 
 The first problem I found was that my findcars function had different feature extraction than in training so the data was not getting correctly normalized hence showing huge number of false positives. Then, I had to do several iterations to find a color space with minimum false positives. With correction of findcars function and settling with YCrCb, I moved on to generate the complete pipeline with video output.
 
-Even after setting a threshold of false positives, I was still seeing a lot of them. Then, I started caching 10 recent boxes output. And then I added them to the heatmap and set a threshold on all the 10 recent and current boxes. This helped me in removing a lot of false positives but I was still getting some strong detections from bridge guardrails. Then I added the recent correctly detected labels as well to the heatmap to further reduce the false positives but this causes to lose the car when it is far from us.
+Even after setting a threshold of false positives, I was still seeing a lot of them. Then, I started caching 10 recent boxes output. And then I added them to the heatmap and set a threshold on all the 10 recent and current boxes. This helped me in removing a lot of false positives but I was still getting some strong detections from bridge guardrails. Then I added the recent correctly detected labels as well to the heatmap to further reduce the false positives but this caused to lose the car when it is far from us.
+
+Then I added 3 more scales to make total four sliding window searches. First on 32x32 windows only between pixels 400 to 528 on y-axis, second on 48x48 windows between pixels 400 to 560, third on 64x64 windows between pixels 400 to 592 and fourth on 96x96 windows between pixels 400 and 656. The idea for this was to be distinctly able to detect distant cars but also not add to false positives by searching small windows throughout the space.
 
 In the meanwhile, I tried several other ways to detect cars without false positives which didn't work (most of them).
 
