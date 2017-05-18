@@ -14,10 +14,14 @@ The goals / steps of this project are the following:
 [image2]: ./output_images/hog1.png
 [image3]: ./output_images/features_before_normalization.png
 [image4]: ./output_images/normalized_features.png
-[image8]: ./examples/sliding_window.jpg
-[image9]: ./examples/bboxes_and_heat.png
-[image10]: ./examples/labels_map.png
-[image11]: ./examples/output_bboxes.png
+[image5]: ./output_images/sws1.png
+[image6]: ./output_images/sws2.png
+[image7]: ./output_images/sws3.png
+[image8]: ./output_images/sws4.png
+[image9]: ./output_images/sws5.png
+[image10]: ./output_images/sws6.png
+[image11]: ./output_images/vi1.jpg
+[image12]: ./output_images/vi2.jpg
 [video1]: ./project_video_output.mp4
 
 
@@ -73,17 +77,27 @@ I implemented this in Detectionpipeline.ipynb of my repository. I marked region 
 ####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
-
+This image shows 48x48 windows:
+![alt text][image5]
+This image shows 64x64 windows:
+![alt text][image6]
+This image shows 96x96 windows:
+![alt text][image7]
+This image shows thresholded heatmaps:
 ![alt text][image8]
+This image shows heatmaps and detection box overlayed:
+![alt text][image10]
+This image shows detection box on image:
+![alt text][image9]
 ---
 
 ### Video Implementation
 
-####1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
+#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (somewhat wobbly or unstable bounding boxes are ok as long as you are identifying the vehicles most of the time with minimal false positives.)
 Here's a [link to my video result](./project_video_output.mp4)
 
 
-####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
+#### 2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes.
 
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.
 
@@ -91,15 +105,12 @@ Later I also used the centroids of previous detections to add heat to the region
 
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
-### Here are six frames and their corresponding heatmaps:
+Here is output of raw heatmaps and thresholded detection boxes for aggregate of previous detections (top left), current detections (top right), aggregate of previous labels (bottom left) and final detection output (bottom right);:
 
-![alt text][image9]
-
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
-![alt text][image10]
-
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
 ![alt text][image11]
+
+Here the resulting bounding boxes are drawn onto the same frame:
+![alt text][image12]
 
 ---
 
@@ -111,7 +122,12 @@ The first problem I found was that my findcars function had different feature ex
 
 Even after setting a threshold of false positives, I was still seeing a lot of them. Then, I started caching 10 recent boxes output. And then I added them to the heatmap and set a threshold on all the 10 recent and current boxes. This helped me in removing a lot of false positives but I was still getting some strong detections from bridge guardrails. Then I added the recent correctly detected labels as well to the heatmap to further reduce the false positives but this caused to lose the car when it is far from us.
 
-Then I added 3 more scales to make total four sliding window searches. First on 32x32 windows only between pixels 400 to 528 on y-axis, second on 48x48 windows between pixels 400 to 560, third on 64x64 windows between pixels 400 to 592 and fourth on 96x96 windows between pixels 400 and 656. The idea for this was to be distinctly able to detect distant cars but also not add to false positives by searching small windows throughout the space.
+Then I added 3 more scales to make total four sliding window searches. First on 32x32 windows only between pixels 400 to 528 on y-axis, second on 48x48 windows between pixels 400 to 560, third on 64x64 windows between pixels 400 to 592 and fourth on 96x96 windows between pixels 400 and 656. The idea for this was to be distinctly able to detect distant cars but also not add to false positives by searching small windows throughout the space. But I soon realized that 32x32 windows were too small to correctly predict and were giving more false positives than helping in detection so I skipped this.
+
+But I was still getting false positives so I created a similar debugging function to watch raw heats in project video. I processed a video 'projectvideoheatoutput' where I overlayed unthresholded heats from current detections, previous detections and previous labels on top of detected boxes. This helped me in tuning the parameters and selecting correct number of previous detections. I also added the heats in such a manner that heat from large boxes was added multiple times and from small boxes was added less number of times, to balance the weights for all the y-axis. Finally, I splitted x-axis into half to remove clutter on left side.
 
 In the meanwhile, I tried several other ways to detect cars without false positives which didn't work (most of them).
 
+To make the detection more robust, a better predictor should be used. Moreover, a real tracking algorithm should be used. Keeping record of last detections isn't very robust solution.
+
+On a lighter note, radar should be used for detection and tracking.
