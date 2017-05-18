@@ -20,8 +20,8 @@ The goals / steps of this project are the following:
 [image8]: ./output_images/sws4.png
 [image9]: ./output_images/sws5.png
 [image10]: ./output_images/sws6.png
-[image11]: ./output_images/vi1.jpg
-[image12]: ./output_images/vi2.jpg
+[image11]: ./output_images/vi1.JPG
+[image12]: ./output_images/vi2.JPG
 [video1]: ./project_video_output.mp4
 
 
@@ -77,18 +77,31 @@ I implemented this in Detectionpipeline.ipynb of my repository. I marked region 
 ####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
 Ultimately I searched on two scales using YCrCb 3-channel HOG features plus spatially binned color and histograms of color in the feature vector, which provided a nice result.  Here are some example images:
+
 This image shows 48x48 windows:
+
 ![alt text][image5]
+
 This image shows 64x64 windows:
+
 ![alt text][image6]
+
 This image shows 96x96 windows:
+
 ![alt text][image7]
+
 This image shows thresholded heatmaps:
+
 ![alt text][image8]
+
 This image shows heatmaps and detection box overlayed:
+
 ![alt text][image10]
+
 This image shows detection box on image:
+
 ![alt text][image9]
+
 ---
 
 ### Video Implementation
@@ -110,6 +123,7 @@ Here is output of raw heatmaps and thresholded detection boxes for aggregate of 
 ![alt text][image11]
 
 Here the resulting bounding boxes are drawn onto the same frame:
+
 ![alt text][image12]
 
 ---
